@@ -29,7 +29,7 @@ resource "aws_security_group" "webserver_sg" {
   vpc_id      = data.aws_vpcs.default_vpc.ids[0]
 
   dynamic "ingress" {
-    for_each = var.sg_allow_ports
+    for_each = [80,22,8080]
     content { 
     description      = "---"
     from_port        = ingress.value
