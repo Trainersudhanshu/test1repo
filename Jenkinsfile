@@ -21,7 +21,9 @@ pipeline {
             //sh "aws configure set aws_access_key_id "
             //sh  "aws configure set aws_secret_access_key "
             sh  "terraform init"
-            //sh "terraform apply --auto-approve"
+            sh "terraform apply --auto-approve"
+            sh "sleep 30"
+            sh "ansible-playbook httpdconfigure.yml"
             
         }
         }
