@@ -1,5 +1,4 @@
 resource "aws_instance" "web" {
-  count = 3
   depends_on = [aws_key_pair.my_key_pair, aws_security_group.webserver_sg ]
   ami   = data.aws_ami.latest_amazon_linux.id
   instance_type = var.instanceType
@@ -57,7 +56,7 @@ provisioner "local-exec" {
 
 }
 resource "null_resource" "configureansibleinventoryIPdetails"{
-count =3
+count =1
 triggers ={
   mytrigger = timestamp()
 }
