@@ -50,13 +50,17 @@
         name: socat
         state: present
         
-    - name: Start socat to expose Prometheus service externally
-      command: "sudo socat TCP4-LISTEN:8080,fork,su=nobody TCP4:{{ minikube_prometheus_url.stdout.split('://')[1] }}"
-      async: 10  # Set a timeout in seconds
-      poll: 0     # Poll indefinitely until the command completes
+    # - name: Start socat to expose Prometheus service externally
+    #   command: "sudo socat TCP4-LISTEN:8080,fork,su=nobody TCP4:{{ minikube_prometheus_url.stdout.split('://')[1] }}"
+    #   async: 10  # Set a timeout in seconds
+    #   poll: 0     # Poll indefinitely until the command completes
 
     - name: Update Helm repositories for Grafana
       command: helm repo update
+      ignore_errors: yes
+
+    - name: Add Help Repo for Grafana
+      command: helm repo add grafana https://grafana.github.io/helm-charts 
       ignore_errors: yes
 
     - name: Install Grafana using Helm
@@ -72,8 +76,8 @@
       register: minikube_grafana_url
       ignore_errors: yes
 
-    - name: Start socat to expose Grafana service externally
-      command: "sudo socat TCP4-LISTEN:82,fork,su=nobody TCP4:{{ minikube_grafana_url.stdout.split('://')[1] }}"
-      async: 10  # Set a timeout in seconds
-      poll: 0   
-      ignore_errors: yes
+    # - name: Start socat to expose Grafana service externally
+    #   command: "sudo socat TCP4-LISTEN:82,fork,su=nobody TCP4:{{ minikube_grafana_url.stdout.split('://')[1] }}"
+    #   async: 10  # Set a timeout in seconds
+    #   poll: 0   
+    #   ignore_errors: yes
