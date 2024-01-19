@@ -37,7 +37,7 @@
       ignore_errors: yes
 
     - name: Expose Prometheus service using kubectl
-      command: kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext --port=31090
+      command: kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext
       ignore_errors: yes
 
     - name: Get Minikube service URL for Prometheus
