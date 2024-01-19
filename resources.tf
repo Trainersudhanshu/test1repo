@@ -3,7 +3,7 @@ resource "aws_instance" "web" {
   ami   = data.aws_ami.latest_amazon_linux.id
   instance_type = var.instanceType
   tags = {
-    Name = "${var.instanceTagName}-${count.index}"
+    Name = "${var.instanceTagName}"
   }
   key_name = aws_key_pair.my_key_pair.key_name
   vpc_security_group_ids = [aws_security_group.webserver_sg.id]
