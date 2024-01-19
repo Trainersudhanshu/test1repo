@@ -25,6 +25,14 @@ pipeline {
             sh "sleep 30"
             sh "chmod 400 mykey"
             sh "ansible-playbook httpdconfigure.yml"
+            sh "curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm"
+            sh "rpm -Uvh minikube-latest.x86_64.rpm"
+            sh "minikube start --force"
+            sh "curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.28.3/2023-11-14/bin/linux/amd64/kubectl"
+            sh "chmod +x ./kubectl"
+            sh "cp ./kubectl /usr/bin/"
+            sh "kubect get pods"
+
             
         }
         }
