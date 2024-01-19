@@ -21,7 +21,7 @@ pipeline {
             sh "aws configure set aws_access_key_id AKIA2UC27P3FDVF5CKUU"
             sh  "aws configure set aws_secret_access_key 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"
             sh  "terraform init"
-            sh "terraform apply"
+            sh "terraform apply --auto-approve"
             
         }
         }
