@@ -56,12 +56,11 @@ provisioner "local-exec" {
 
 }
 resource "null_resource" "configureansibleinventoryIPdetails"{
-count =1
 triggers ={
   mytrigger = timestamp()
 }
 provisioner "local-exec" {
-    command = "echo ${aws_instance.web[count.index].public_ip} ansible_user=ec2-user ansible_ssh_private_key_file=gfgkey >> inventory"
+    command = "echo ${aws_instance.web[0].public_ip} ansible_user=ec2-user ansible_ssh_private_key_file=gfgkey >> inventory"
   }
 }
 
