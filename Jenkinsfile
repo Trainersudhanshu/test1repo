@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build.......,,,,,,,.'
-                git 'https://github.com/Trainersudhanshu/JenkinsProj.git'
+                git 'https://github.com/Trainersudhanshu/test1repo.git'
                 sh "date"
             }
         }
