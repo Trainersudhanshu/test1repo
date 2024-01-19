@@ -20,7 +20,6 @@ pipeline {
             sh "terraform --version"
             //sh "aws configure set aws_access_key_id "
             //sh  "aws configure set aws_secret_access_key "
-            sh "ssh-keygen -t rsa -b 2048 mykey"
             sh  "terraform init"
             //sh "terraform apply --auto-approve"
             
