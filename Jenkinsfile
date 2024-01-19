@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Build....'
+                echo 'Build......'
                 git 'https://github.com/Trainersudhanshu/JenkinsProj.git'
                 sh "date"
             }
