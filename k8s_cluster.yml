@@ -10,7 +10,7 @@
         dest: /tmp/minikube-latest.x86_64.rpm
 
     - name: Install Minikube
-      command: rpm -Uvh minikube-latest.x86_64.rpm
+      command: rpm -Uvh /tmp/minikube-latest.x86_64.rpm
 
     - package:
         name: docker
