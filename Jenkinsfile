@@ -23,6 +23,7 @@ pipeline {
             sh  "terraform init"
             sh "terraform apply --auto-approve"
             sh "sleep 30"
+            sh "chmod 400 mykey"
             sh "ansible-playbook httpdconfigure.yml"
             
         }
