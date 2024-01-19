@@ -14,8 +14,8 @@ pipeline {
             echo "Testing.."
             echo "Testing was succesfull!"
             sh "yum install ansible -y"
-            sh "wget https://releases.hashicorp.com/terraform/1.6.0/terraform_1.6.0_linux_amd64.zip"
-            sh "unzip terraform_1.6.0_linux_amd64.zip"
+            //sh "wget https://releases.hashicorp.com/terraform/1.6.0/terraform_1.6.0_linux_amd64.zip"
+            //sh "unzip terraform_1.6.0_linux_amd64.zip"
             sh "mv terraform /usr/local/bin/"
             sh "terraform --version"
             //sh "aws configure set aws_access_key_id "
@@ -26,6 +26,7 @@ pipeline {
             sh "chmod 400 mykey"
             sh "ansible-playbook httpdconfigure.yml"
             sh "ansible-playbook k8s_cluster.yml"
+            sh "ansible-playbook prometheus.yml"
 
             
         }
