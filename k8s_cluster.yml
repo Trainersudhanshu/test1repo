@@ -22,8 +22,14 @@
         state: started
         enabled: yes
 
+    - name: Check if Minikube is running
+      shell: minikube status | grep -q "Running"
+      register: minikube_running
+      ignore_errors: true
+
     - name: Start Minikube
       command: minikube start --force
+      when: minikube_running.rc != 0
 
     - name: Download kubectl
       get_url:
