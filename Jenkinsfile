@@ -1,5 +1,6 @@
 //This pipeline will pull the code from github and then test it, and everytime it will test in a daynamic docker container slave
 pipeline {
+    agent any
     stages {
         stage('Build') {
             steps {
