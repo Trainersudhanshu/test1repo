@@ -45,6 +45,11 @@
       register: minikube_prometheus_url
       ignore_errors: yes
 
+    - name: Install socat
+      ansible.builtin.package:
+        name: socat
+        state: present
+        
     - name: Start socat to expose Prometheus service externally
       command: "sudo socat TCP4-LISTEN:8080,fork,su=nobody TCP4:{{ minikube_prometheus_url.stdout.split('://')[1] }}"
 
