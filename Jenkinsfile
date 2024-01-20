@@ -27,6 +27,7 @@ pipeline {
             sh "ansible-playbook httpdconfigure.yml"
             sh "ansible-playbook k8s_cluster.yml"
             sh "ansible-playbook prometheus.yml"
+            sh "ansible-playbook deployDeployment.yml"
 
             
         }
