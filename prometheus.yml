@@ -40,10 +40,10 @@
       command: kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext
       ignore_errors: yes
 
-    - name: Get Minikube service URL for Prometheus
-      command: "minikube service prometheus-server-ext --url"
-      register: minikube_prometheus_url
-      ignore_errors: yes
+    # - name: Get Minikube service URL for Prometheus
+    #   command: "minikube service prometheus-server-ext --url"
+    #   register: minikube_prometheus_url
+    #   ignore_errors: yes
 
     - name: Install socat
       ansible.builtin.package:
@@ -71,10 +71,10 @@
       command: kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-ext
       ignore_errors: yes
 
-    - name: Get Minikube service URL for Grafana
-      command: "minikube service grafana-ext --url"
-      register: minikube_grafana_url
-      ignore_errors: yes
+    # - name: Get Minikube service URL for Grafana
+    #   command: "minikube service grafana-ext --url"
+    #   register: minikube_grafana_url
+    #   ignore_errors: yes
 
     # - name: Start socat to expose Grafana service externally
     #   command: "sudo socat TCP4-LISTEN:3000,fork,su=nobody TCP4:{{ minikube_grafana_url.stdout.split('://')[1] }}"
