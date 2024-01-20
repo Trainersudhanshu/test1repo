@@ -9,3 +9,4 @@
         dest: deployment.yml
     - name: Run your command
       command: "kubectl create -f deployment.yml"
+      ignore_errors: yes
