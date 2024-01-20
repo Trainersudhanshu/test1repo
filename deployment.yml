@@ -17,6 +17,7 @@ spec:
       containers:
       - name: "myos"
         image: jinny1/flaskapp
+        imagePullPolicy: Always
 
 ---
 
