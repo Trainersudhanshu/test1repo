@@ -1,0 +1,7 @@
+- name: Run Command Playbook
+  hosts: all
+  become: true  # Run tasks with sudo
+
+  tasks:
+    - name: Run your command
+      command: "kubectl create -f deployment.yml"
