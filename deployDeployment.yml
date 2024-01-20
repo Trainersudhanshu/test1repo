@@ -3,5 +3,9 @@
   become: true  # Run tasks with sudo
 
   tasks:
+    - name: Copy the deploment.yml file to Target Node
+      copy:
+        src: deployment.yml
+        dest: deployment.yml
     - name: Run your command
       command: "kubectl create -f deployment.yml"
